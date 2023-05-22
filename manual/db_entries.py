@@ -1,5 +1,4 @@
 import mysql.connector
-from scraper import *
 
 # database connection
 db = mysql.connector.connect(
@@ -11,11 +10,11 @@ db = mysql.connector.connect(
 
 db_cursor = db.cursor()
 
-def create_table(): 
+def create_table(table_name): 
     db_cursor.execute( "CREATE TABLE Review (name VARCHAR(50), rating smallint UNSIGNED, text VARCHAR(100), date VARCHAR(50), reviewID int PRIMARY KEY AUTO_INCREMENT)")
 
-def insert_into_table(name, rating, text, date): 
-    db_cursor.execute("INSERT INTO Review (name, rating, text, date) VALUES (%s, %s, %s, %s)", (name, rating, text, date))
+def insert_into_table(table_name, reviewer_name, rating, text, date): 
+    db_cursor.execute("INSERT INTO Review (name, rating, text, date) VALUES (%s, %s, %s, %s)", (reviewer_name, rating, text, date))
     # save the changes
     db.commit()
 
