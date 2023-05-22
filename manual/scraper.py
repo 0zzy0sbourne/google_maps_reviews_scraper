@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_reviews(url, place_name):
+def scrape_reviews(url):
          
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36"
@@ -26,7 +26,6 @@ def scrape_reviews(url, place_name):
         soup = BeautifulSoup(response.content, 'html.parser')
             
         reviews = []
-        reviews.append({"place_name": place_name})
         location_info = {}
         data_id = ''
         token = ''
