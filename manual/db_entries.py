@@ -1,10 +1,11 @@
 import mysql.connector
+import config
 
 # database connection
 db = mysql.connector.connect(
     host="localhost", 
     user="root",
-    passwd="Oo1721905322782",  
+    passwd= config.DB_PASSWORD,  
     database="burger_index"
 )
 

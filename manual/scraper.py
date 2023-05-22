@@ -43,6 +43,7 @@ def scrape_reviews(url, place_name):
                 'reviewer_name': el.select_one('.TSUbDb').text.strip(),
                 'rating': el.select_one('.BgXiYe .lTi8oc')['aria-label'],
                 'review': el.select_one('.Jtu6Td').text.strip(),
+                'date': el.select_one('.dehysf').text.strip(), 
             })
 
         # Check if there are more reviews to fetch
@@ -67,7 +68,9 @@ def scrape_reviews(url, place_name):
                     'reviewer_name': el.select_one('.TSUbDb').text.strip(),
                     'rating': el.select_one('.BgXiYe .lTi8oc')['aria-label'],
                     'review': el.select_one('.Jtu6Td').text.strip(),
+                    'date': el.select_one('.dehysf').text.strip(), 
                 })
+
 
         return token, reviews[:100] # Return up to 100 reviews
      
