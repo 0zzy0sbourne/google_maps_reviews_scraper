@@ -1,4 +1,5 @@
 import mysql.connector
+from scraper import *
 
 # database connection
 db = mysql.connector.connect(
@@ -31,7 +32,7 @@ def describe_table(table_name):
 
 # insert_into_table("ozan", 5, "best food in the town", "04.09.2022")
 
-db_cursor.execute("SELECT * FROM Review")
+# db_cursor.execute("SELECT * FROM Review")
 
-for value in db_cursor: 
-    print(value)
+# for value in db_cursor: 
+#    print(value)
