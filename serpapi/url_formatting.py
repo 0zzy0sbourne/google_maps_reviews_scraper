@@ -4,7 +4,7 @@ import re
 
 parsed_places = []
 
-for place in places: 
+def parse_place_url(place):
     place_info = {}
     
     place_info["name"] = place["name"]
@@ -20,9 +20,22 @@ for place in places:
     place_id = f"!4m5!3m4!1s{place_id_match}!8m2!3d{place_latitude}!4d{place_longitude}"
     place_info["id"] = place_id
 
-    parsed_places.append(place_info)
-    # print(parsed_places)
+    return place_info
 
+def listing_parsed_places(places):
+    parsed_places = []
+
+    for place in places:
+        parsed_place = parse_place_url(place)
+        parsed_places.append(parsed_place)
+
+    return parsed_places
+
+
+parsed_places = listing_parsed_places(places)
+for place in parsed_places:
+    # Perform further processing or operations
+    print(place)
 
 
 """
