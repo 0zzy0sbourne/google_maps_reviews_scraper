@@ -24,9 +24,9 @@ class DatabaseManager:
             print("Table '{}' created successfully.".format(table_name))
 
     def insert_into_table(self, table_name, reviewer_name, rating, text, date):
-        truncated_text = text[:500]  # Truncate the text to 500 characters
+        # truncated_text = text[:500]  # Truncate the text to 500 characters
         query = "INSERT INTO `{}` (name, rating, text, date) VALUES (%s, %s, %s, %s)".format(table_name)
-        values = (reviewer_name, rating, truncated_text, date)
+        values = (reviewer_name, rating, text, date)
         self.db_cursor.execute(query, values)
         self.db.commit()
 
@@ -36,6 +36,12 @@ class DatabaseManager:
         result = self.db_cursor.fetchall()
         for row in result:
             print(row)
+    
+    def read_from_table(self, table_name): 
+        query = "SELECT * FROM `{}`".format(table_name)
+        self.db_cursor.execute(query)
+        for data in self.db_cursor: 
+            print(data)
 
 """
     USAGE: 

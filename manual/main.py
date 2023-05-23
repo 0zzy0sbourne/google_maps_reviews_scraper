@@ -25,13 +25,15 @@ def process_place(place):
         # Describe the table
         db_manager.describe_table(place["name"])
 
+        db_manager.read_from_table("Makan Saj")
+
     except Exception as e:
         logger.exception(f"Error processing place '{place['name']}': {str(e)}")
 
 def main():
     for place in places:
         process_place(place)
-
+    
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     main()
