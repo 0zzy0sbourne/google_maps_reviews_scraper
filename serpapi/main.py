@@ -2,8 +2,8 @@ from serpapi import GoogleSearch
 import json
 
 import config
-# from db_entries import *
 from url_formatting import parsed_places
+from db_entries import *
 
 for place in parsed_places: 
   
@@ -21,26 +21,27 @@ for place in parsed_places:
   search = GoogleSearch(params)
   results = search.get_dict()
 
-  # print(results["place_results"]["title"])
-  # print(json.dumps(results["place_results"], indent=2, ensure_ascii=False))
-
-  for review in results["place_results"]["user_reviews"]["most_relevant"]: 
-    print(review["username"])
+  # print(results["place_results"]["title"])
+  # print(json.dumps(results["place_results"], indent=2, ensure_ascii=False))
 
   """
   for review in results["place_results"]["user_reviews"]["most_relevant"]: 
-      print(review["username"])
+    print(review)
+  """
+
+  for review in results["place_results"]["user_reviews"]["most_relevant"]: 
+    print(review["username"])
 
   # Create a table inside the database with the name of the place
   create_table(place["name"])
 
   # Insert reviews to the table that is created for a place
   for review in results["place_results"]["user_reviews"]["most_relevant"]: 
-      insert_into_table(place["name"], review["username"], review["rating"], review["description"])
+    insert_into_table(place["name"], review["username"], review["rating"], review["description"], review["date"])
 
   # Describe the table
   describe_table(place["name"])
-  """
+  
 
 
 

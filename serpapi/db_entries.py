@@ -6,10 +6,11 @@ db = mysql.connector.connect(
     host="localhost", 
     user="root",
     passwd= config.DB_PASSWORD,  
-    database="burger_index_db"
+    database="burger_index_serpapi_db"
 )
 
 db_cursor = db.cursor()
+
 """
 def create_table(table_name): 
     query = "CREATE TABLE `{}` (name VARCHAR(50), rating VARCHAR(50), text VARCHAR(1000), date VARCHAR(50), reviewID int PRIMARY KEY AUTO_INCREMENT)".format(table_name)
