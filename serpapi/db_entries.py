@@ -3,10 +3,10 @@ import config
 
 # database connection
 db = mysql.connector.connect(
-    host="localhost", 
-    user="root",
+    host= config.DB_HOST, 
+    user= config.DB_USER,
     passwd= config.DB_PASSWORD,  
-    database="burger_index_serpapi_db"
+    database= config.DB_DATABASE
 )
 
 db_cursor = db.cursor()
