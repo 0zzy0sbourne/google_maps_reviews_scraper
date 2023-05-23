@@ -26,7 +26,7 @@ for place in parsed_places:
 
   for review in results["place_results"]["user_reviews"]["most_relevant"]: 
     print(review["username"])
-    
+
   """
   for review in results["place_results"]["user_reviews"]["most_relevant"]: 
       print(review["username"])
@@ -46,8 +46,5 @@ for place in parsed_places:
 
 
 """
-results["place_results"].user_reviews.most_relevant --> list of dictionaries, username, rating, description
-
-
-!4m5!3m4!1s0xd4229e9d8626437:0xf068a61d2d56c279!8m2!3d40.4363245!4d-3.6829763
+results["place_results"].user_reviews.most_relevant --> list of dictionaries. Keys are "username", "rating", "description"
 """
