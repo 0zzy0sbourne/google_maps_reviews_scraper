@@ -21,11 +21,12 @@ def process_place(place):
             db_manager.insert_into_table(
                 place["name"], review["reviewer_name"], review["rating"], review["review"], review["date"]
             )
+        # print(reviews[0])
 
-        # Describe the table
+        # Describe the table
         db_manager.describe_table(place["name"])
 
-        db_manager.read_from_table("Makan Saj")
+        # db_manager.read_from_table("Makan Saj")
 
     except Exception as e:
         logger.exception(f"Error processing place '{place['name']}': {str(e)}")

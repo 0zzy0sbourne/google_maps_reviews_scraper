@@ -1,5 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse, parse_qs
+
+
+def switch_span(soup): 
+    for el in soup.select('.AxAp9e'):
+        print(el)
+
 
 def scrape_reviews(url):
          
@@ -20,11 +27,14 @@ def scrape_reviews(url):
                 "https://www.google.com/async/reviewDialog?hl=en_us&async=feature_id:0x3e5f43348a67e24b:0xff45e502e1ceb7e2,next_page_token:CAESBkVnSUlDZw==,sort_by:qualityScore,start_index:,associated_topic:,_fmt:pc"
 
         """
-       
-        response = requests.get(url, headers=headers)
+       # Assuming you have the existing URL stored in a variable called `url`
+        modified_url = url.replace("sort_by:qualityScore", "sort_by:newestFirst")
+        print(modified_url)
+
+        response = requests.get(modified_url, headers=headers)
 
         soup = BeautifulSoup(response.content, 'html.parser')
-            
+        # switch_span(soup)
         reviews = []
         location_info = {}
         data_id = ''
@@ -37,6 +47,7 @@ def scrape_reviews(url):
                 'title': soup.select_one('.P5Bobd').text.strip(),
             }
      
+        
         for el in soup.select('.gws-localreviews__google-review'):
             reviews.append({
                 'reviewer_name': el.select_one('.TSUbDb').text.strip(),
