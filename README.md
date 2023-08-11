@@ -1,1 +1,1 @@
-# Google Map Reviews Scraper 
+# Google Maps Reviews Scraper 
